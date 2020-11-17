@@ -1,0 +1,82 @@
+{
+  "name": "online_sales",
+  "version": "1.0.0",
+  "description": "A virtual store to sale products.",
+  "keywords": [
+    "loopback-application",
+    "loopback"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "build": "lb-tsc",
+    "build:watch": "lb-tsc --watch",
+    "lint": "npm run prettier:check && npm run eslint",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
+    "prettier:check": "npm run prettier:cli -- -l",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "eslint": "lb-eslint --report-unused-disable-directives .",
+    "eslint:fix": "npm run eslint -- --fix",
+    "pretest": "npm run clean && npm run build",
+    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "posttest": "npm run lint",
+    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
+    "migrate": "node ./dist/migrate",
+    "openapi-spec": "node ./dist/openapi-spec",
+    "prestart": "npm run build",
+    "start": "node -r source-map-support/register .",
+    "clean": "lb-clean dist *.tsbuildinfo .eslintcache"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "",
+  "license": "",
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "dependencies": {
+    "@loopback/authentication": "^1.1.0",
+    "@loopback/authentication-jwt": "^0.4.2",
+    "@loopback/boot": "^2.3.3",
+    "@loopback/core": "^2.8.0",
+    "@loopback/openapi-v3": "^3.4.3",
+    "@loopback/repository": "^2.7.0",
+    "@loopback/rest": "^5.1.1",
+    "@loopback/rest-explorer": "^2.2.4",
+    "@loopback/service-proxy": "^2.3.2",
+    "@sendgrid/mail": "^7.2.1",
+    "@types/multer": "^1.4.3",
+    "@types/passport-http-bearer": "^1.0.35",
+    "crypto-js": "^4.0.0",
+    "generate-password": "^1.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "loopback-connector-mongodb": "^5.2.3",
+    "loopback-connector-twilio": "^1.0.0",
+    "md5": "^2.2.1",
+    "multer": "^1.4.2",
+    "passport": "^0.4.1",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "tslib": "^2.0.0",
+    "twilio": "^3.47.0"
+  },
+  "devDependencies": {
+    "@loopback/build": "^5.4.3",
+    "@loopback/eslint-config": "^8.0.1",
+    "@loopback/testlab": "^3.1.7",
+    "@types/node": "^10.17.26",
+    "@types/passport": "^1.0.3",
+    "@types/passport-http": "^0.3.8",
+    "eslint": "^7.2.0",
+    "source-map-support": "^0.5.19",
+    "typescript": "~3.9.5"
+  }
+}
